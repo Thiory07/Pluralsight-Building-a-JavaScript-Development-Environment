@@ -3,9 +3,9 @@ import path from 'path';
 import open from 'open';
 import webpack from  "webpack" ;
 import config from  "../webpack.config.dev" ;
-
-var port = 3000;
-var app = express();
+/* eslint-disable no-console */ 
+const port = 3000;
+const app = express();
 const compiler = webpack(config);
 
 app.use(require('webpack-dev-middleware')(compiler,{
