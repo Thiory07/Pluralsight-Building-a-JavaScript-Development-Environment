@@ -1,4 +1,5 @@
-import {getUsers} from './api/userApi';
+import './index.css';
+import {getUsers, deleteUser} from './api/userApi';
 
 getUsers().then(result =>{
   let usersBody = "";
@@ -11,6 +12,21 @@ getUsers().then(result =>{
       <td>${user.email}</td>
     </tr>`
   });
-
   global.document.getElementById('users').innerHTML = usersBody
+
+
+  const deleteLinks = global.document.getElementsByClassName('deleteUser');
+
+  Array.from(deleteLinks, link =>{
+    console.log(this);
+    link.onclick = function(event){
+      console.log('click');
+      const element = event.target;
+      console.log(element);
+      event.preventDefault();
+      deleteUser(element.attributes["data-id"].value);
+      const row = element.parentNode.parentNode;
+      row.parentNode.removeChild(row);
+    }
+  });
 });
