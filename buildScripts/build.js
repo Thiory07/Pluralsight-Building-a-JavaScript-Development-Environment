@@ -15,12 +15,12 @@ webpack(webpackConfig).run((err, stats) =>{
   const jsonStats = stats.toJson();
 
   if (jsonStats.hasErros) {
-    return jsonStats.errors.map => console.log(chalk.red(error));
-  };
+    return jsonStats.errors.map(error => console.log(chalk.red(error)) );
+  }
 
   if (jsonStats.hasWarnings) {
     console.console.log(chalk.yellow('webpack generated the following warnings'));
-    jsonStats.warnings.map => console.log(chalk.yellow(warning));
+    jsonStats.warnings.map(warning => console.log(chalk.yellow(warning)));
   }
 
   console.log(`Webpack stats: ${stats}`);
